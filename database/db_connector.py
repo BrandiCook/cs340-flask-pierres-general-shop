@@ -1,5 +1,13 @@
 import MySQLdb as mariadb
-from db_credentials import host, user, passwd, db
+import os
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
+
+host = os.environ.get("340DBHOST")
+user = os.environ.get("340DBUSER")
+passwd = os.environ.get("340DBPW")
+db = os.environ.get("340DB")
 
 def connect_to_database(host = host, user = user, passwd = passwd, db = db):
     '''
@@ -27,6 +35,10 @@ def execute_query(db_connection = None, query = None, query_params = ()):
 
     print("Executing %s with %s" % (query, query_params));
     # Create a cursor to execute query. Why? Because apparently they optimize execution by retaining a reference according to PEP0249
+    # Return data as a list of dictionaries
+    cursor = db_connection.cursor(MySQLdb.cursors.DictCursor)
+
+    # Return data as a tuple of tuples
     cursor = db_connection.cursor()
 
     '''
