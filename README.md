@@ -1,4 +1,4 @@
-cs340 flask test starter app. on port 9286 on flip 3
+# cs340 flask test starter app
 
 How to run on bash in linux (after cloning repo): <br />
 1: python3 -m venv ./venv <br />
