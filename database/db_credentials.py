@@ -1,5 +1,8 @@
-# To actually have your app use this file, you need to RENAME the file to db_credentials.py
-# You will find details about your CS340 database credentials on Canvas.
+# Citation for db_connector.py:
+# Date: 05/18/2022
+# Based on: OSU cs340_starter_app
+# Source URL: https://github.com/mlapresta/cs340_starter_app and https://github.com/osu-cs340-ecampus/flask-starter-app
+# ---------------------------------------------------------------------------------------------------------------------
 
 # the following will be used by the webapp.py to interact with the database
 # You can also use environment variables
