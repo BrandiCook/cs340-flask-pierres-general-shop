@@ -1,3 +1,8 @@
+# Citation for run.py:
+# Date: 05/18/2022
+# Based on: OSU cs340_starter_app
+# Source URL: https://github.com/mlapresta/cs340_starter_app and https://github.com/osu-cs340-ecampus/flask-starter-app
+
 from flask import Flask, render_template
 from flask import request, redirect
 from flask_mysqldb import MySQL
