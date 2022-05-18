@@ -1,3 +1,8 @@
+# Citation for run.py:
+# Date: 05/18/2022
+# Copied from: OSU cs340_starter_app
+# Source URL: https://github.com/mlapresta/cs340_starter_app
+
 #this file is used to run your flask-based-database-interacting-website persistently!
 
 #change this line to run the app that you want to run
