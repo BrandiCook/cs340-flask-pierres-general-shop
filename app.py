@@ -10,14 +10,14 @@ import os
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = 'classmysql.engr.oregonstate.edu'
-app.config['MYSQL_USER'] = 'cs340_cookb4'
-app.config['MYSQL_PASSWORD'] = '9286' #last 4 of onid
-app.config['MYSQL_DB'] = 'cs340_cookb4'
-app.config['MYSQL_CURSORCLASS'] = "DictCursor"
+# app.config['MYSQL_HOST'] = 'classmysql.engr.oregonstate.edu'
+# app.config['MYSQL_USER'] = 'cs340_cookb4'
+# app.config['MYSQL_PASSWORD'] = '9286' #last 4 of onid
+# app.config['MYSQL_DB'] = 'cs340_cookb4'
+# app.config['MYSQL_CURSORCLASS'] = "DictCursor"
 
 
-mysql = MySQL(app)
+# mysql = MySQL(app)
 
 
 # Routes
@@ -29,6 +29,6 @@ def root():
 # Listener
 if __name__ == "__main__":
 
-    #Start the app on port 9286
+    #Start the app on port 9287
     port = int(os.environ.get('PORT', 9287))
     app.run(port=port, debug=True)
