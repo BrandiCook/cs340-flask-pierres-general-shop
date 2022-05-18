@@ -1,3 +1,8 @@
+# Citation for __init__.py:
+# Date: 05/18/2022
+# Based on: OSU cs340_starter_app
+# Source URL: https://github.com/mlapresta/cs340_starter_app and https://github.com/osu-cs340-ecampus/flask-starter-app
+
 import MySQLdb as mariadb
 from dotenv import load_dotenv, find_dotenv
 import os
