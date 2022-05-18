@@ -1,3 +1,8 @@
+# Citation for __init__.py:
+# Date: 05/18/2022
+# Copied from: OSU cs340_starter_app
+# Source URL: https://github.com/mlapresta/cs340_starter_app
+
 import os
 
 from flask import Flask
