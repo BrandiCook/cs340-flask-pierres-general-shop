@@ -1,6 +1,8 @@
 # cs340 flask test starter app
 
 How to run on bash in linux (after cloning repo): <br />
+***(don't forget to make the .env file, it's NOT HERE!) <br />
+
 1: python3 -m venv ./venv <br />
 2: source ./venv/bin/activate <br />
 3: pip3 install -r requirements.txt <br />
