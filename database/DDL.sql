@@ -13,15 +13,14 @@
         CONSTRAINT employee_id_unique UNIQUE(employeeID)    
     );  
 
-    CREATE TABLE Orders (
-        orderID int(11) AUTO_INCREMENT NOT NULL,
-        orderDate DATE NOT NULL,
-        orderPrice int(11) NOT NULL,
-        customerID int,
-        employeeID int, 
-        PRIMARY KEY (orderID),
-        CONSTRAINT FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON DELETE SET NULL,
-        CONSTRAINT FOREIGN KEY (employeeID) REFERENCES Employees(employeeID) ON DELETE SET NULL
+    CREATE TABLE Products (
+        productID int(11) AUTO_INCREMENT NOT NULL,
+        productName varchar(255) NOT NULL,
+        productDescription varchar(255), 
+        productPrice int(11) NOT NULL,
+        seasonSold varchar(255) NOT NULL DEFAULT 'Year-Round',  
+        PRIMARY KEY (productID),
+        CONSTRAINT product_id_unique UNIQUE(productID)
     );
 
     CREATE TABLE Customers (
@@ -34,6 +33,17 @@
     CONSTRAINT FOREIGN KEY (favoriteProduct) REFERENCES Products(productID) ON DELETE SET NULL
     ); 
 
+    CREATE TABLE Orders (
+        orderID int(11) AUTO_INCREMENT NOT NULL,
+        orderDate DATE NOT NULL,
+        orderPrice int(11) NOT NULL,
+        customerID int,
+        employeeID int, 
+        PRIMARY KEY (orderID),
+        CONSTRAINT FOREIGN KEY (customerID) REFERENCES Customers(customerID) ON DELETE SET NULL,
+        CONSTRAINT FOREIGN KEY (employeeID) REFERENCES Employees(employeeID) ON DELETE SET NULL
+    );
+
     CREATE TABLE OrderDetails (
         orderDetailID int(11) AUTO_INCREMENT NOT NULL,
         orderID int NOT NULL,
@@ -41,16 +51,6 @@
         PRIMARY KEY (orderDetailID),
         CONSTRAINT FOREIGN KEY (orderID) REFERENCES Orders(orderID) ON DELETE CASCADE,
         CONSTRAINT FOREIGN KEY (productID) REFERENCES Products(productID) ON DELETE SET NULL
-    );
-
-    CREATE TABLE Products (
-        productID int(11) AUTO_INCREMENT NOT NULL,
-        productName varchar(255) NOT NULL,
-        productDescription varchar(255), 
-        productPrice int(11) NOT NULL,
-        seasonSold varchar(255) NOT NULL DEFAULT 'Year-Round',  
-        PRIMARY KEY (productID),
-        CONSTRAINT product_id_unique UNIQUE(productID)
     );
 
     INSERT INTO Employees (
@@ -68,62 +68,6 @@
     (
         'Caroline',
         150
-    );
-
-    INSERT INTO Orders (
-        orderDate,
-        orderPrice,
-        customerID, 
-        employeeID
-    )
-    VALUES 
-    (
-        '2022-02-07',
-        500,
-        1,
-        1
-    ),
-    (
-        '2022-02-10',
-        300,
-        2,
-        2
-    ),
-    (
-        '2022-03-01',
-        550,
-        3,
-        3
-    ),
-    (
-        '2022-03-07',
-        1500,
-        4,
-        1
-    ),
-    (
-        '2022-03-15',
-        20,
-        2,
-        1
-    );
-
-    INSERT INTO OrderDetails (
-        orderID,
-        productID
-    )
-    VALUES 
-    (
-        1,
-        3
-    ),
-    (
-        2,
-        4
-    ),
-    (
-        3,
-        5
     );
 
     INSERT INTO Products (
@@ -229,6 +173,62 @@
     ('George', '1962-10-24', 2),
     ('Jodi', '1988-09-11', 3),
     ('Wizard', '1900-12-17', 4);
+
+    INSERT INTO Orders (
+        orderDate,
+        orderPrice,
+        customerID, 
+        employeeID
+    )
+    VALUES 
+    (
+        '2022-02-07',
+        500,
+        1,
+        1
+    ),
+    (
+        '2022-02-10',
+        300,
+        2,
+        2
+    ),
+    (
+        '2022-03-01',
+        550,
+        3,
+        3
+    ),
+    (
+        '2022-03-07',
+        1500,
+        4,
+        1
+    ),
+    (
+        '2022-03-15',
+        20,
+        2,
+        1
+    );
+
+    INSERT INTO OrderDetails (
+        orderID,
+        productID
+    )
+    VALUES 
+    (
+        1,
+        3
+    ),
+    (
+        2,
+        4
+    ),
+    (
+        3,
+        5
+    );
 
     SET FOREIGN_KEY_CHECKS=1;
     COMMIT;
