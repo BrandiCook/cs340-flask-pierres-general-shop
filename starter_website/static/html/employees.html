@@ -1,0 +1,91 @@
+<!---- Citation for the following tables: 
+------ Date: 05/12/2022
+------ Based on the following coursework:
+------ Source URL: https://canvas.oregonstate.edu/courses/1870053/pages/exploration-web-application-technology?module_item_id=22036033 -----> 
+<html>
+<head>
+<title>Employees</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h1>Employees</h1>
+
+[ <a href="index.html">Home</a> | <a href="products.html">Products</a> | <a href="employees.html">Employees</a> | <a href="customers.html">Customers</a> 
+| <a href="orders.html">Orders</a> ]
+<div id="browse" style="display: block">
+<p><strong>Browse Employees</strong></p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>employeeID</th>
+    <th>employeeName</th>
+    <th>employeeSalary</th>
+    <th></th>
+    <th><a href="#">New</a></th>
+  </tr>
+  <tr>
+    <td align="left" >1</td>
+    <td >Pierre</td>
+    <td align="left" >250</td>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+  </tr>
+  <tr>
+    <td align="left" >2</td>
+    <td>Caroline</td>
+    <td align="left" >150</td>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+  </tr>
+  <tr>
+    <td align="left" >3</td>
+    <td>Abigail</td>
+    <td align="left" >150</td>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert" style="display: block">
+    <form id="addEmployee">
+        <legend><strong>Add Employee</strong></legend>
+          <fieldset class="fields">
+            <label> employeeName: </label> <input type="text" name="name">
+            <label> employeeSalary: </label> <input type="text" name="name">
+          </fieldset>
+          <input class="btn" type="submit" id="addEmployee" value="Add Employee">
+          <input class="btn" type="button" value="Cancel">
+	</form> <!--add new Employee-->
+</div><!-- insert -->
+<!--Learned about input select from 
+https://stackoverflow.com/questions/10142643/easy-way-to-add-drop-down-menu-with-1-100-without-doing-100-different-options-->
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+  <form id="updateEmployee">
+      <legend><strong>Update Employee</strong></legend>
+          <fieldset class="fields">
+            <label> employeeID:</label> <input type="number" min="1" max="3" value="1">
+            <label> employeeName: </label> <input type="text" value="Pierre" name="name">
+            <label> employeeSalary: </label> <input type="text" type="number" value="250">
+    </fieldset>
+    <input class="btn" type="submit" id="UpdateSaveEmployee" value="Update Employee">
+          <input class="btn" type="button" value="Cancel" >
+  </form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deleteEmployee">
+      <legend><strong>Delete Employee</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following Employee?</p>
+          <label> employeeID:</label> <input type="number" min="1" max="3" value="1">
+          <label> employeeName: </label> <input type="text" value="Pierre" name="name">
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteEmployee" value="Delete Employee">
+          <input class="btn" type="button" value="Cancel" >
+  </form> 
+</div><!-- delete -->
+</body>
+</html>
