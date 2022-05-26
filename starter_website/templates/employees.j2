@@ -1,0 +1,64 @@
+<html>
+<!-- Adapted from https://github.com/osu-cs340-ecampus/flask-starter-app -->
+<head>
+	<title>Employees</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<h1>Employees</h1> [ <a href="home">Home</a> | <a href="products">Products</a> | <a href="employees">Employees</a> | <a href="customers">Customers</a> | <a href="orders">Orders</a> ]
+	<div id="browse">
+		<table border="1" cellpadding="5">
+            <!-- Access data tuple passed from webapp.py --> 
+            {% if data %}
+			    <thead>
+				    <tr>
+					    <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+					    
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+					    <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+					
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                    </tr>
+
+				<tbody>
+					<!-- Now, iterate through every item in data -->{% for item in data %}
+					    <tr>
+						    <!-- Then iterate through every key in the current item dictionary -->
+                            {% for key in item.keys() %}
+
+						    <!-- Create a <td> element with the value of that key in it -->
+						    <td> {{item[key]}} </td> 
+                            {% endfor %}
+
+                            <!-- Create our edit/delete buttons -->
+						    <td><a href="edit_employees/{{item.employeeID}}" class="btn btn-default">Edit</a></td>
+						    <td><a href="delete_employee/{{item.employeeID}}" class="btn btn-default">Delete</a></td>
+
+					    </tr> 
+                        {% endfor %} 
+                {% endif %} 
+        </table>   
+	<p>&nbsp;</p>
+    </div> <!-- browse --> 
+
+	<div id="insert">
+		<!-- form to INSERT new data into employees-->
+		<form id="insertEmployee" action="/employees" method="post">
+			<legend><strong>Add Employee</strong></legend>
+			<fieldset>
+                <!-- placeholder shows ghost text, required forces an input, pattern forces input adherence -->
+				<label for="make">Employee Name:</label>
+				<input type="text" class="form-control" id="employeeName" name="employeeName" pattern="[A-Za-z]{1,}" placeholder="" required>
+
+				<label for="model">Employee Salary:</label>
+				<input type="text" class="form-control" id="employeeSalary" name="employeeSalary" pattern="[A-Za-z0-9]{1,}" placeholder="" required>
+			<input type="submit" value="Add Employee" name="Add_Employee" class="btn btn-primary" style="margin:.5rem;">
+            </fieldset>
+			<!-- Create 'Add Employee' button-->
+        </form>
+	</div><!--insert-->
+
+</body>
+</html>

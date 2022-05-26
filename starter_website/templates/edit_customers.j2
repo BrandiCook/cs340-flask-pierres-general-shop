@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Edit Customers</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="edit">
+        <!-- form to edit data in Customers-->
+        <form id="editCustomer" action="/edit_customers/{{data[0].customerID}}" method="post">
+            <legend><strong>Edit Customers</strong></legend>
+            <fieldset>
+                <!-- We can preset form inputs to match attributes currently stored for 'id' of person to be updated via value= and accessing our passed data tuple -->
+                <!-- Create hidden form input to store the passed 'id' of the person we are editing so we can access it easily in our 'POST' method in our app.py -->
+                <!-- placeholder shows ghost text, required forces an input, pattern forces input adherence -->
+				
+                <input type="hidden" value="{{data[0].customerID}}" class="form-control" id="customerID" name="customerID" required>
+                <label for="make">Customer Name:</label>
+
+				<input type="text" value="{{data[0].customerName}}" "class="form-control" id="customerName" name="customerName" pattern="[A-Za-z]{1,}" required>
+
+				<label for="model">Date of Birth:</label>
+				<input type="date" value="{{data[0].dateOfBirth}}" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="">
+
+                <label for="year">Favorite Product:</label>
+				<input type="text" value="{{data[0].favoriteProduct}}" class="form-control" id="favoriteProduct" name="favoriteProduct" pattern="[0-9]{1,}">
+
+            </fieldset>
+            <input type="submit" value="Edit Customer" name="Edit_Customer" class="btn btn-primary" style="margin:.5rem;">
+            <a href='/customers'><input class="btn" type="button" value="cancel"></a>
+        </form>
+    </div>
+</body>
+</html>

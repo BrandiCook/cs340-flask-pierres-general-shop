@@ -1,0 +1,46 @@
+<html>
+
+<head>
+	<title>Edit Product</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  
+  <div id="edit">
+    <!-- form to edit data in Products-->
+    <form id="editProduct" action="/edit_products/{{data[0].productID}}" method="post">
+                <legend><strong>Edit Product</strong></legend>
+                <fieldset>
+                    <!-- We can preset form inputs to match attributes currently stored for 'id' of person to be updated via value= and accessing our passed data tuple -->
+                    <!-- Create hidden form input to store the passed 'id' of the person we are editing so we can access it easily in our 'POST' method in our app.py -->
+                    <input type="hidden" value="{{data[0].productID}}" class="form-control" id="productID" name="productID" required>
+                    <label for="make">Product Name:</label>
+
+                    <input type="text" value="{{data[0].productName}}" class="form-control" id="productName" name="productName" pattern="[A-Za-z\s]{1,}" required>
+                    
+                    <label for="model">Product Description:</label>
+                    <input type="text" value="{{data[0].productDescription}}" class="form-control" id="productDescription" name="productDescription" pattern="[a-zA-Z0-9\s]{1,}">
+                
+                    <label for="year">Product Price:</label>
+                    <input type="text" value="{{data[0].productPrice}}"class="form-control" id="productPrice" name="productPrice" pattern="[0-9]{1,}" placeholder="" required>
+
+                    <label for="seasonSold">Season Sold:</label>
+                    <select class="form-control" id="seasonSold" name="seasonSold" placeholder="" required>
+                    <!-- these are hard coded to ensure no data redundancy -->
+                      <option value="{{data[0].seasonSold}}" selected>{{data[0].seasonSold}}</option>
+                      <option value="Year-Round">Year-Round</option>
+                      <option value="Spring">Spring</option>
+                      <option value="Summer">Summer</option>
+                      <option value="Fall">Fall</option>
+                      <option value="Winter">Winter</option>
+                    </select>
+                
+                </fieldset>
+                <input type="submit" value="Edit Product" name="Edit_Product" class="btn btn-primary" style="margin:.5rem;">
+                <a href='/products'><input class="btn" type="button" value="cancel"></a>
+            </form>
+  </div>
+
+</body>
+</html>

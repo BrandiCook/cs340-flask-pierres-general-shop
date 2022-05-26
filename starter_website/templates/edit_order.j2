@@ -1,0 +1,69 @@
+<html>
+
+<head>
+	<title>Edit Order</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  
+  <div id="edit">
+    <!-- form to edit data in Orders-->
+    <form id="editOrder" action="/edit_order/{{data[0].orderID}}" method="post">
+                <legend><strong>Edit Order</strong></legend>
+                <fieldset>
+                    <!-- We can preset form inputs to match attributes currently stored for 'id' of person to be updated via value= and accessing our passed data tuple -->
+                    <!-- Create hidden form input to store the passed 'id' of the person we are editing so we can access it easily in our 'POST' method in our app.py -->
+                    <input type="hidden" value="{{data[0].orderID}}" class="form-control" id="orderID" name="orderID" required>
+                    <label for="orderDate">Order Date:</label>
+
+                    <input type="date" value="{{data[0].orderDate}}" class="form-control" id="orderDate" name="orderDate" required>
+                    <label for="orderPrice">Order Price:</label>
+
+                    <input type="text" value="{{data[0].orderPrice}}" class="form-control" id="orderPrice" name="orderPrice" pattern="[0-9]{1,}" required>
+                    <label for="customerID">Customer Name:</label>
+
+                    <select class="form-control" id="customerName" name="customerName" pattern="[0-9]{1,}" placeholder=""> 
+                        <!-- Access our customerName tuple passed from app.py-->
+                        <option value="0">&nbsp;</option>
+                        {% for customerName in customerName %}
+                                <!-- If the value iterated customerName matches the value of the customerName of person currently Editing, pre-select that option -->
+                                {% if customerName['customerID'] == data[0].customerID %}
+                                    <option value="{{ customerName['customerID'] }}" selected> {{customerName['customerName']}}</option>
+                                {% else %}
+                                    <option value="{{ customerName['customerID'] }}"> {{customerName['customerName']}}</option> 
+                                {% endif %}
+
+
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                    </select>
+                     
+                    <label for="employeeID">Employee Name:</label>
+
+                    <select class="form-control" id="employeeName" name="employeeName" pattern="[0-9]{1,}" placeholder=""> 
+                        <!-- Access our employeeName tuple passed from app.py-->
+                        <option value="0">&nbsp;</option>
+                        {% for employeeName in employeeName %}
+                                <!-- If the value iterated employeeName matches the value of the employeeName of person currently Editing, pre-select that option -->
+                                {% if employeeName['employeeID'] == data[0].employeeID %}
+                                    <option value="{{ employeeName['employeeID'] }}" selected> {{employeeName['employeeName']}}</option>
+                                {% else %}
+                                    <option value="{{ employeeName['employeeID'] }}"> {{employeeName['employeeName']}}</option> 
+                                {% endif %}
+
+
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                    </select> 
+                  
+                        
+                  
+                
+                </fieldset>
+                <input type="submit" value="Edit Order" name="Edit_Order" class="btn btn-primary" style="margin:.5rem;">
+                <a href='/orders'><input class="btn" type="button" value="cancel"></a>
+            </form>
+  </div>
+</body>
+</html>
